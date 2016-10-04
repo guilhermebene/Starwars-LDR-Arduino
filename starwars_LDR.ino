@@ -1,6 +1,5 @@
-int ledPin = 7; //Led no pino 7
-int ldrPin = 0; //LDR no pino analígico 8
-int ldrValor = 0; //Valor lido do LDR
+int ldrPin = 0; //LDR in analogic pin 8
+int ldrValor = 0; //Value read from the LDR
 #define  C0 16.35
 #define Db0 17.32
 #define D0  18.35
@@ -114,15 +113,15 @@ void setup() {
 pinMode(8, OUTPUT);   
 pinMode(9, OUTPUT);       
 digitalWrite(9,LOW);
-pinMode(ledPin,OUTPUT); //define a porta 7 como saída
-Serial.begin(9600); //Inicia a comunicação serial
+pinMode(ledPin,OUTPUT); //sets port 7 as the exit port
+Serial.begin(9600); //Inicializes serial communication
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   ldrValor = analogRead(ldrPin);
-  if (ldrValor<= 800){
+  if (ldrValor<= 800){ //As the luminosity increases, ldrValor will decrease
     Serial.println(ldrValor);
     tone(8,LA3,Q); 
     delay(1+Q); //delay duration should always be 1 ms more than the note in order to separate them.
@@ -199,7 +198,7 @@ void loop() {
     delay(1+S);
     tone(8,C4,E);
     delay(1+E);
-    delay(1+E);//PAUSE QUASI FINE RIGA
+    delay(1+E);//PAUSE
     tone(8,F3,E);
     delay(1+E);
     tone(8,Ab3,Q);
@@ -253,7 +252,7 @@ void loop() {
     delay(1+S);
     tone(8,C4,E);
     delay(1+E);
-    delay(1+E);//PAUSE QUASI FINE RIGA
+    delay(1+E);//PAUSE
     tone(8,F3,E);
     delay(1+E);
     tone(8,Ab3,Q);
@@ -276,7 +275,7 @@ void loop() {
     
   }
   else{
-  //imprime o valor lido do LDR no monitor serial
+  //prints the value read at the LDR at the Serial Monitor
  Serial.println(ldrValor);
  delay(100);
 }
